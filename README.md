@@ -50,7 +50,9 @@ WHERE c.city = 'London'
   </details>
 
 ```SQL
-
+SELECT *
+FROM customers as c
+WHERE c.postal_code = '1010'
 ```
 
 * [ ] ***find the phone number for the supplier with the id 11. Should be (010) 9984510***
@@ -61,7 +63,9 @@ WHERE c.city = 'London'
   </details>
 
 ```SQL
-
+SELECT s.phone
+FROM suppliers as s
+WHERE s.supplier_id = '11'
 ```
 
 * [ ] ***list orders descending by the order date. The order with date 1998-05-06 should be at the top***
@@ -72,7 +76,9 @@ WHERE c.city = 'London'
   </details>
 
 ```SQL
-
+SELECT *
+FROM orders
+ORDER BY order_date DESC
 ```
 
 * [ ] ***find all suppliers who have names longer than 20 characters. Returns 11 records***
@@ -84,7 +90,9 @@ WHERE c.city = 'London'
   </details>
 
 ```SQL
-
+SELECT *
+FROM suppliers as s
+WHERE length(s.company_name) > 20
 ```
 
 * [ ] ***find all customers that include the word 'MARKET' in the contact title. Should return 19 records***
@@ -97,7 +105,9 @@ WHERE c.city = 'London'
   </details>
 
 ```SQL
-
+SELECT *
+FROM suppliers as s
+WHERE UPPER(s.contact_title) LIKE ('%MARKET%')
 ```
 
 * [ ] ***add a customer record for***
@@ -114,7 +124,8 @@ WHERE c.city = 'London'
   </details>
 
 ```SQL
-
+INSERT INTO customers(customer_id, company_name, contact_name, address, city, postal_code, country)
+VALUES('SHIRE', 'The Shire', 'Bilbo Baggins', '1 Hobbit-Hole', 'Bag End', '111', 'Middle Earth')
 ```
 
 * [ ] ***update _Bilbo Baggins_ record so that the postal code changes to _"11122"_***
@@ -125,7 +136,9 @@ WHERE c.city = 'London'
   </details>
 
 ```SQL
-
+UPDATE customers
+SET postal_code = '11122'
+WHERE customer_id = 'SHIRE'
 ```
 
 * [ ] ***list orders grouped and ordered by customer company name showing the number of orders per customer company name. _Rattlesnake Canyon Grocery_ should have 18 orders***
